@@ -4,8 +4,9 @@ public class Employee {
     private String name;
     private String pps;
     private String phone;
+    private String gender;
 
-    public Employee(String nameSize, String ppsSize, String phoneSize){
+    public Employee(String nameSize, String ppsSize, String phoneSize, String genderName){
         if(nameSize.length() >= 5 && nameSize.length() <= 22){
             this.name = nameSize;
         }
@@ -26,6 +27,13 @@ public class Employee {
         else{
             throw new IllegalArgumentException("Phone number invalid! Must be 11 characters long");
         }
+
+        if(genderName == "Man" || genderName == "Woman" || genderName == "Non-Binary"){
+            this.gender = genderName;
+        }
+        else{
+            throw new IllegalArgumentException("Gender is invalid! Options are Man, Woman or Non-Binary");
+        }
     }
 
     public String getName(){
@@ -38,5 +46,9 @@ public class Employee {
 
     public String getPhone(){
         return phone;
+    }
+
+    public String getGender(){
+        return gender;
     }
 }
