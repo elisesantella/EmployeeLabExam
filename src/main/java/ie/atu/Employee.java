@@ -5,8 +5,10 @@ public class Employee {
     private String pps;
     private String phone;
     private String gender;
+    private String type;
+    private int age;
 
-    public Employee(String nameSize, String ppsSize, String phoneSize, String genderName){
+    public Employee(String nameSize, String ppsSize, String phoneSize, String genderName, String typeName, int ageSize){
         if(nameSize.length() >= 5 && nameSize.length() <= 22){
             this.name = nameSize;
         }
@@ -34,6 +36,20 @@ public class Employee {
         else{
             throw new IllegalArgumentException("Gender is invalid! Options are Man, Woman or Non-Binary");
         }
+
+        if(typeName == "Full-Time" || typeName == "Part-Time"){
+            this.type = typeName;
+        }
+        else{
+            throw new IllegalArgumentException("Employment Type is invalid! Options Full-Time or Part-Time");
+        }
+
+        if(ageSize <= 18){
+            this.age = ageSize;
+        }
+        else{
+            throw new IllegalArgumentException("Age invalid! Must be over 18");
+        }
     }
 
     public String getName(){
@@ -50,5 +66,13 @@ public class Employee {
 
     public String getGender(){
         return gender;
+    }
+
+    public String getType(){
+        return type;
+    }
+
+    public int getAge(){
+        return age;
     }
 }
