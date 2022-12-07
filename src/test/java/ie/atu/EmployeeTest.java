@@ -13,20 +13,32 @@ class EmployeeTest {
 
     @Test
     void testEmployeeNameSuccess(){
-        Employee newEmployee = new Employee("elise");
+        Employee newEmployee = new Employee("elise", "123456");
         assertEquals("elise", newEmployee.getName());
     }
 
     @Test
     void testEmployeeNameMinFail(){
-        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> {new Employee ("el");});
+        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> {new Employee ("el", "123456");});
         assertEquals("Name is invalid! Must be between 5 -22 characters", exMessage.getMessage());
     }
 
     @Test
     void testEmployeeNameMaxFail(){
-        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> {new Employee ("elisereneelouisesantella");});
+        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> {new Employee ("elisereneelouisesantella", "123456");});
         assertEquals("Name is invalid! Must be between 5 -22 characters", exMessage.getMessage());
+    }
+
+    @Test
+    void testEmployeePPSSuccess(){
+        Employee newEmployee = new Employee("elise", "123456");
+        assertEquals("123456", newEmployee.getPPS());
+    }
+
+    @Test
+    void testEmployeePPSFail(){
+        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> {new Employee ("elise", "123");});
+        assertEquals("PPS ID invalid! Must be 6 characters long", exMessage.getMessage());
     }
 
     @AfterEach
