@@ -27,6 +27,6 @@ tests:
       java-version: '15'
       distribution: 'adopt'
 
-  -name: Build with Maven
-   run: nvm -B clean test
+      -name: Build with Maven
+      run: nvm -B clean test
 
